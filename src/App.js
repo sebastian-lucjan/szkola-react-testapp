@@ -7,8 +7,9 @@ import {
 import Home from './pages/Home';
 import { Contact } from './pages/Contact';
 import { Page404 } from './pages/Page404';
+import OfferPage from './pages/Offer';
 
-import { NavMenu } from './NavMenu';
+import { NavMenu } from './components/NavMenu';
 
 function App() {
   return (
@@ -22,6 +23,9 @@ function App() {
             </Route>
             <Route path="/" exact>
               <Home />
+            </Route>
+            <Route path="/offer/:offerId">
+              <OfferPage />
             </Route>
             <Route path="*">
               <Page404 />

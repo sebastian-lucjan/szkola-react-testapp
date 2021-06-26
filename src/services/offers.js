@@ -10,3 +10,20 @@ export const fetchOffers = async () => {
     console.error(error);
   }
 };
+
+export const fetchOffer = async (offerId) => {
+  try {
+    const response = await fetch('/data/offers.json');
+    const data = await response.json(); //dodać await ??
+    const filteredResults = data.filter(
+      ({ id }) => parseInt(id, 10) === parseInt(offerId, 10)
+    );
+    if (filteredResults.length) {
+      return filteredResults[0];
+    } else {
+      throw Error('Coś nie tak!');
+    }
+  } catch (_error) {
+    throw Error('Coś nie tak!');
+  }
+};
