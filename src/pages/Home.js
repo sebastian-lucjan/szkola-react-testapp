@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 // import logo from './logo.svg';
-import './App.css';
-import { fetchPosts } from './services/posts';
-import { fetchOffers } from './services/offers';
+import '../App.css';
+// import { fetchPosts } from './services/posts';
+// import { fetchOffers } from './services/offers';
+
+import api from '../services'; //podejście barrels - główny plik
 // function sum(a, b) {
 //   return a + b;
 // }
@@ -68,13 +70,13 @@ function Home() {
   }, []);
 
   useEffect(() => {
-    setData(fetchPosts());
+    setData(api.fetchPosts());
   }, []);
 
   useEffect(() => {
     (async () => {
       try {
-        const data = await fetchOffers();
+        const data = await api.fetchOffers();
         setOffers(data);
       } catch (error) {
         console.log(error);
